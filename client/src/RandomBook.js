@@ -33,8 +33,6 @@ function RandomBook() {
 
 
 
-
-
         </div>    
       )    
 }
