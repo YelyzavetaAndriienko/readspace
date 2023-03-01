@@ -35,8 +35,7 @@ function RandomBook() {
 
 
 
-
-        </div>      
+        </div>    
       )    
 }
 
