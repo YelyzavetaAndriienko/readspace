@@ -1,71 +1,8 @@
+const router = require("express").Router();
+const {getOneUser,postUser,deleteUser} = require("../controllers/UserControllers")
 
-const express = require("express");
-const app = express();
+router.post("/",postUser );
+router.delete("/:email", deleteUser);
+router.get("/",getOneUser );
 
-const bcrypt = require('bcrypt');
-const UserModer = require('../models/User');
-
-
-app.post("/users", async(req, res) => {
-    let user = getUser(req);
-
-      user.save((err, userDB) => {
-        if (err) {
-          return res.status(400).json({
-             ok: false,
-             err,
-          });
-        }
-        res.json({
-              ok: true,
-              user: userDB
-           });
-        })
-});
-
-
-app.delete("/users/:email", async(req, res) => {
-    console.log(req.params.email)
-    const email = req.params.email
-
-    const result = await UserModer.deleteOne({email});
-    if (result.deletedCount === 1) {
-        res.status(200).send(`User deleted with email: ${email}`)
-      } else {
-        res.status(404).send(`User not found with email: ${email}`)
-      }
-});
-
-function getUser(req) {
-    let {email, password} = req.body;
-
-    return new UserModer({
-        email,
-        password: bcrypt.hashSync(password, 10),
-      });
-}
-
-app.get("/user", async(req, res) => {
-    let {email, password} = req.body;
-
-    let user = await UserModer.findOne({email});    
-
-    if (! bcrypt.compareSync(password, user.password)){
-        return res.status(400).json({
-           ok: false,
-           err: {
-             message: "No such user in the system"
-           }
-        });
-    }
-    else
-    {
-        res.json({
-        ok: true,
-        user: user
-        });
-    }
-     return user;
-});
-
-module.exports = app;
+module.exports = router;

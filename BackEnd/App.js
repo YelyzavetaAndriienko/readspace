@@ -1,25 +1,23 @@
-const express = require("express");
+require('dotenv').config()
 
+const express = require("express");
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const connectionString = process.env.DATABASE_URL
+const PORT = process.env.SERVER_URI
 const app = express();
 
-const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const connectionString = "mongodb+srv://admin:admin@cluster0.tn0cl.mongodb.net/books-db?retryWrites=true&w=majority&authSource=admin";
-const mongoose = require('mongoose');
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.get("/", async(req, res) => {
-    console.log(req);
-    return res.json("Books back End");
-})
-
-app.use(require("./routes/UserRoutes"))
-app.use('/book',require('./routers/BookRouter'));
+app.use('/book',require('./routes/BookRoutes'));
+app.use('/user',require('./routes/UserRoutes'));
 
 
 try {
-app.listen(3001, ()=> {
+app.listen(PORT, ()=> {
     console.log("Server listens");
 })
 } catch (error) {
