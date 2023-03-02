@@ -15,7 +15,13 @@ app.get("/", async(req, res) => {
 })
 
 app.use(require("./routes/UserRoutes"))
+app.use('/book',require('./routers/BookRouter'));
 
-app.listen(3001, function(err) {
+
+try {
+app.listen(3001, ()=> {
     console.log("Server listens");
 })
+} catch (error) {
+    console.log(`Error: ${error.message}`)
+}
