@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import Registration from "./Registration";
+import RandomBook from "./RandomBook";
 import Home from "./Home";
+
 
 function App() {
     return (
@@ -10,6 +12,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/registration' element={<Registration />} />
+                <Route path='/randombook' element={<RandomBook />} />
             </Routes>
         </BrowserRouter>
     );
