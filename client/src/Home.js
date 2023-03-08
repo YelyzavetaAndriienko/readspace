@@ -54,8 +54,8 @@ function Home() {
                       </li>
                     </ul>
                        </div>
-                         <div>
-                         <button className="generate_button">ЗГЕНЕРУВАТИ</button>
+                         <div className="generate_button">
+                         <a href="/randombook" className="generate_link" >ЗГЕНЕРУВАТИ</a>
                          </div>
                     </div>
 
