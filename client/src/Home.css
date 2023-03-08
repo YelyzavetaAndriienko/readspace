@@ -1,5 +1,6 @@
 body{
     background-image: url(images/backgr.jpg);
+    font-family: 'Inter';
 }
 
 .container{
@@ -77,6 +78,7 @@ body{
 .button{
      width: 100%;
        height: 50px;
+       font-family: 'Inter';
        font-size: 25px;
        margin-bottom: 20px;
        border: 0;

@@ -124,7 +124,7 @@ h3 {
     justify-content: center;
 }
 
-.next_button, .save_button {
+.next_button, .save_button, .recomend_button {
     width: 100px;
     height: 30px;
     margin: 10px;
@@ -143,4 +143,8 @@ h3 {
 
 .save_button {
     background-color: #E1EABC;
+}
+.recomend_button{
+ background-color: #EAE3BC;
+     width: 200px;
 }
