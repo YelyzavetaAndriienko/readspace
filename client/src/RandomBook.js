@@ -1,7 +1,38 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import './RandomBook.css'
+import axios from "./api/axios";
 
 function RandomBook() {
+
+
+  const [randomBook, setBook] = useState({
+    authors: "",
+    description: "",
+    full_authors: [{author_name: ""}],
+    full_genres: [{genre_name: ""}],
+    image: "",
+    title: ""
+  })
+
+  let book = []
+  async function fetchRandomBook() {
+    try{
+      axios.get(
+          "http://localhost:3001/book/random_book_without_param/" )
+          .then((response) => {
+            setBook(response.data.book)
+            console.log(response.data.book)
+          })
+    } catch (er) {
+      console.log(er)
+    }
+  }
+
+  useEffect(()=>{
+    fetchRandomBook()
+    console.log(randomBook.authors)
+  },[])
+
     return(
         <div className="randombook">
           <header class="header">
@@ -31,23 +62,23 @@ function RandomBook() {
           <div class="book_block">
             <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
             <div class="bookbackgr_block">
-              <h2>"Маленький принц"</h2>
+              <h2>{randomBook.title}</h2>
               <div class="bookdescr_block">
               <div class="bookimg_block">
-                <img src="https://cdn.eksmo.ru/v2/ITD000000000840510/COVER/cover1__w820.jpg" alt="book" class="bookimg"/>
+                <img src={randomBook.image} alt="book" class="bookimg"/>
               </div>
               <div class="book_txt">
               <div class="booktxt_author">
                 <h3>АВТОР</h3>
-                Антуан
+                { randomBook.full_authors.map(i => i.author_name )}
               </div>
               <div class="booktxt_genre">
                 <h3>ЖАНР</h3>
-                фантастика
+                { randomBook.full_genres.map(i => i.genre_name + " " )}
               </div>
               <div class="booktxt_descr">
                 <h3>ОПИС</h3>
-                Ця книжка — справжній шедевр видатного французького письменника, поета й мислителя, пілота і вченого, конструктора й винахідника, людини-легенди Антуана де Сент-Екзюпері
+                {randomBook.description}
               </div>
               </div>
               </div>
