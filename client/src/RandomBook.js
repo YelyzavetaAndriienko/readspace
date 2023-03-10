@@ -35,7 +35,7 @@ function RandomBook() {
 
     return(
         <div className="randombook">
-          <header class="header">
+   {/*       <header class="header">
             <div class="container">
               <div class="header_wrapper">
 
@@ -58,7 +58,7 @@ function RandomBook() {
               </div>
             </div>
           </header>
-
+    */}
           <div class="book_block">
             <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
             <div class="bookbackgr_block">
@@ -78,7 +78,9 @@ function RandomBook() {
               </div>
               <div class="booktxt_descr">
                 <h3>ОПИС</h3>
-                {randomBook.description}
+                <div className="booktxt_descr_scroll">
+                    {randomBook.description}
+                    </div>
               </div>
               </div>
               </div>

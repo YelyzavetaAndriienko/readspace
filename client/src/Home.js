@@ -12,29 +12,7 @@ function Home() {
 
     return(
             <div className="home">
-                  <header class="header">
-                    <div class="container">
-                      <div class="header_wrapper">
-
-                        <div class="header_block">
-                           <img src={require("./images/logo.png")} alt="logo" class="logo"/>
-                        </div>
-
-                        <nav class="nav">
-                          <a href="#" class="nav_link">ГОЛОВНА</a>
-                          <a href="#" class="nav_link">КАТЕГОРІЇ</a>
-                          <a href="#" class="nav_link">КОНТАКТИ</a>
-                          <a href="#" class="nav_link">ПРО НАС</a>
-                        </nav>
-
-                        <div class="header_block">
-                          <div class="header_lng">
-                           <img src={require("./images/profile.png")} alt="profile" class="profile"/>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </header>
+                  
                   <div className="main_info">
                     <div className="image_main">
                     <div className="info_main">

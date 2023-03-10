@@ -33,29 +33,6 @@ function RandomBook() {
 
     return(
         <div className="randombook">
-          <header className="header">
-            <div className="container">
-              <div className="header_wrapper">
-
-                <div className="header_block">
-                  <img src={require("./images/logo.png")} alt="logo" className="logo"/>
-                </div>
-
-                <nav className="nav">
-                  <a href="#" className="nav_link">ГОЛОВНА</a>
-                  <a href="#" className="nav_link">КАТЕГОРІЇ</a>
-                  <a href="#" className="nav_link">КОНТАКТИ</a>
-                  <a href="#" className="nav_link">ПРО НАС</a>
-                </nav>
-
-                <div className="header_block">
-                  <div className="header_lng">
-                    <img src={require("./images/profile.png")} alt="profile" className="profile"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
 
           <div className="book_block">
             <img src={require("./images/bookbackgr.png")} alt="bookbackgr" className="bookbackgr"/>
@@ -63,7 +40,7 @@ function RandomBook() {
               <h2>{randomBook.title}</h2>
               <div className="bookdescr_block">
                 <div className="bookimg_block">
-                  <img src={randomBook.image} width="200" height="300" alt="book" className="bookimg"/>
+                  <img src={randomBook.image} alt="book" className="bookimg"/>
                 </div>
                 <div className="book_txt">
                   <div className="booktxt_author">
@@ -76,7 +53,10 @@ function RandomBook() {
                   </div>
                   <div className="booktxt_descr">
                     <h3>ОПИС</h3>
+                    <div className="booktxt_descr_scroll">
+                    <h3>ОПИС</h3>
                     {randomBook.description}
+                    </div>
                   </div>
                 </div>
               </div>

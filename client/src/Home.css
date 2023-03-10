@@ -1,6 +1,7 @@
 body{
     background-image: url(images/backgr.jpg);
     font-family: 'Inter';
+    overflow-x: hidden; 
 }
 
 .container{
