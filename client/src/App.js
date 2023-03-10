@@ -1,4 +1,6 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from './Navbar';
 import Login from "./Login";
 import Registration from "./Registration";
 import RandomBook from "./RandomBook";
@@ -9,6 +11,7 @@ import Home from "./Home";
 function App() {
     return (
         <BrowserRouter>
+        <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />

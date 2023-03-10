@@ -63,7 +63,7 @@ function RandomBook() {
               <h2>{randomBook.title}</h2>
               <div className="bookdescr_block">
                 <div className="bookimg_block">
-                  <img src={randomBook.image} width="200" height="300" alt="book" className="bookimg"/>
+                  <img src={randomBook.image} alt="book" className="bookimg"/>
                 </div>
                 <div className="book_txt">
                   <div className="booktxt_author">
@@ -76,7 +76,10 @@ function RandomBook() {
                   </div>
                   <div className="booktxt_descr">
                     <h3>ОПИС</h3>
+                    <div className="booktxt_descr_scroll">
+                    <h3>ОПИС</h3>
                     {randomBook.description}
+                    </div>
                   </div>
                 </div>
               </div>
