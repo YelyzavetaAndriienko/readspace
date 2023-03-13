@@ -14,8 +14,9 @@ function RandomBook() {
 
   async function fetchRandomBook() {
     try{
+
       axios.get(
-          "http://localhost:3001/book/random_book_without_param/" )
+          "/book/random_book_without_param/" )
           .then((response) => {
             setBook(response.data.book)
             //console.log(response.data.book)
@@ -32,30 +33,6 @@ function RandomBook() {
 
     return(
         <div className="randombook">
-   {/*       <header class="header">
-            <div class="container">
-              <div class="header_wrapper">
-
-                <div class="header_block">
-                   <img src={require("./images/logo.png")} alt="logo" class="logo"/>
-                </div>
-
-                <nav class="nav">
-                  <a href="#" class="nav_link">ГОЛОВНА</a>
-                  <a href="#" class="nav_link">КАТЕГОРІЇ</a>
-                  <a href="#" class="nav_link">КОНТАКТИ</a>
-                  <a href="#" class="nav_link">ПРО НАС</a>
-                </nav>
-
-                <div class="header_block">
-                  <div class="header_lng">
-                   <img src={require("./images/profile.png")} alt="profile" class="profile"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
-    */}
           <div class="book_block">
             <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
             <div class="bookbackgr_block">
