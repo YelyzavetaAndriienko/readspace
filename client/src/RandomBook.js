@@ -3,8 +3,6 @@ import './RandomBook.css'
 import axios from "./api/axios";
 
 function RandomBook() {
-
-
   const [randomBook, setBook] = useState({
     authors: "",
     description: "",
@@ -14,14 +12,13 @@ function RandomBook() {
     title: ""
   })
 
-  let book = []
   async function fetchRandomBook() {
     try{
       axios.get(
           "http://localhost:3001/book/random_book_without_param/" )
           .then((response) => {
             setBook(response.data.book)
-            console.log(response.data.book)
+            //console.log(response.data.book)
           })
     } catch (er) {
       console.log(er)
@@ -30,7 +27,7 @@ function RandomBook() {
 
   useEffect(()=>{
     fetchRandomBook()
-    console.log(randomBook.authors)
+    //console.log(randomBook.authors)
   },[])
 
     return(
