@@ -2,7 +2,7 @@
 
 To run the project open a terminal and write 
 ```
-$ cd api
+$ cd BackEnd
 $ npm start
 ```
 
