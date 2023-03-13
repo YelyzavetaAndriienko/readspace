@@ -12,12 +12,11 @@ function RandomBook() {
     image: "",
     title: ""
   })
-  const [change, setChange] = useState(false);
 
   async function fetchRandomBook() {
     try{
       axios.get(
-          "http://localhost:3001/book/random_book_without_param/" )
+          "/book/random_book_without_param/" )
           .then((response) => {
             setBook(response.data.book)
           })
@@ -28,8 +27,7 @@ function RandomBook() {
 
   useEffect(()=>{
     fetchRandomBook()
-    setChange(false);
-  },[change])
+  },[])
 
     return(
         <div className="randombook">

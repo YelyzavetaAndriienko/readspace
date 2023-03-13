@@ -7,7 +7,7 @@ function Home() {
     const navigate = useNavigate()
 
     function recomendBook(event){
-        navigate('/randombooknotreg')
+        navigate('/randombook')
     }
 
     return(
@@ -18,7 +18,7 @@ function Home() {
                     <div className="info_main">
                      <h1 className="header_main">Fill your house with lots of books and experience</h1>
                      <div className="text_main">Fill your house with lots of books and experience</div>
-                     <button onSubmit={recomendBook} class="button">ПІДІБРАТИ КНИГУ</button>
+                     <button onClick={recomendBook} class="button"> ПІДІБРАТИ КНИГУ</button>
                        </div>
                         <img src={require("./images/main.jpg")} alt="main" class="main"/>
                            </div>
