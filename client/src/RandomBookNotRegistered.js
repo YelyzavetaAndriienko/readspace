@@ -29,43 +29,42 @@ function RandomBook() {
     fetchRandomBook()
   },[])
 
-    return(
-        <div className="randombook">
-
-          <div className="book_block">
-            <img src={require("./images/bookbackgr.png")} alt="bookbackgr" className="bookbackgr"/>
-            <div className="bookbackgr_block">
-              <h2>{randomBook.title}</h2>
-              <div className="bookdescr_block">
-                <div className="bookimg_block">
-                  <img src={randomBook.image} alt="book" className="bookimg"/>
-                </div>
-                <div className="book_txt">
-                  <div className="booktxt_author">
-                    <h3>АВТОР</h3>
-                    {randomBook.full_authors.map(i => i.author_name)}
-                  </div>
-                  <div className="booktxt_genre">
-                    <h3>ЖАНР</h3>
-                    {randomBook.full_genres.map(i => i.genre_name + " ")}
-                  </div>
-                  <div className="booktxt_descr">
-                    <h3>ОПИС</h3>
-                    <div className="booktxt_descr_scroll">
-                    <h3>ОПИС</h3>
-                    {randomBook.description}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  return(
+    <div className="randombook">
+      <div class="book_block">
+        <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
+        <div class="bookbackgr_block">
+          <h2>{randomBook.title}</h2>
+          <div class="bookdescr_block">
+          <div class="bookimg_block">
+            <img src={randomBook.image} alt="book" class="bookimg"/>
           </div>
-
-          <div className="footer">
-            <button onClick={()=>window.location.reload(false)} className="recomend_button">ПОРЕКОМЕНДУВАТИ</button>
+          <div class="book_txt">
+          <div class="booktxt_author">
+            <h3>АВТОР</h3>
+            { randomBook.full_authors.map(i => i.author_name )}
+          </div>
+          <div class="booktxt_genre">
+            <h3>ЖАНР</h3>
+            { randomBook.full_genres.map(i => i.genre_name + " " )}
+          </div>
+          <div class="booktxt_descr">
+            <h3>ОПИС</h3>
+            <div className="booktxt_descr_scroll">
+                {randomBook.description}
+                </div>
+          </div>
+          </div>
           </div>
         </div>
-      )
+      </div>
+
+      <div class="footer">
+        <button class="next_button">НАСТУПНА</button>
+        <button class="save_button">ЗБЕРЕГТИ</button>
+      </div>
+    </div>    
+  )    
 }
 
 export default RandomBook
