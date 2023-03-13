@@ -6,6 +6,7 @@ import Registration from "./Registration";
 import RandomBook from "./RandomBook";
 import RandomBookNotRegistered from "./RandomBookNotRegistered";
 import Home from "./Home";
+import Profile from "./Profile";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path='/registration' element={<Registration />} />
                 <Route path='/randombook' element={<RandomBook />} />
                 <Route path='/randombooknotreg' element={<RandomBookNotRegistered />} />
+                <Route path='/profile' element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );
