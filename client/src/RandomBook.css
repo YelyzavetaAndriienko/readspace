@@ -1,5 +1,5 @@
 body{
-    background-image: url(images/backgr.jpg); 
+    background-image: url(images/backgr.jpg);
 }
 
 .book_block {
@@ -9,11 +9,39 @@ body{
     position: relative;
 }
 
+.generate_button{
+    width: 300px;
+    height: 50px;
+    background: #664747;
+    font-weight: bold;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin: 50px 0 50px 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 0;
+
+    text-decoration:none;
+    color: #EAE3BC;
+    font-size: 25px;
+
+    font-family: 'Inter';
+}
+
 .bookbackgr {
     height: 100%;
     width: 50%;
     /*background-image: url(images/bookbackgr.png); */
 }
+
+.generate_link{
+    text-decoration:none;
+    color: #EAE3BC;
+    font-size: 25px;
+}
+
+
 
 .bookbackgr_block {
     height: 100%;
