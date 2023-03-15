@@ -19,7 +19,6 @@ function RandomBook() {
           "/book/random_book_without_param/" )
           .then((response) => {
             setBook(response.data.book)
-            //console.log(response.data.book)
           })
     } catch (er) {
       console.log(er)
@@ -28,7 +27,6 @@ function RandomBook() {
 
   useEffect(()=>{
     fetchRandomBook()
-    //console.log(randomBook.authors)
   },[])
 
     return(

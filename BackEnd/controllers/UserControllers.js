@@ -5,7 +5,6 @@ const postUser = async(req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-    console.log(req.body)
     let user = getUser(req);
     user.save((err, userDB) => {
         if (err) {
@@ -21,33 +20,12 @@ const postUser = async(req, res) => {
     })
 }
 
-function getUser(req) {
-    let {email, password} = req.body;
-
-    return new UserModer({
-        email,
-        password: bcrypt.hashSync(password, 10),
-    });
-}
-
-const deleteUser = async(req, res) => {
-    console.log(req.params.email)
-    const email = req.params.email
-
-    const result = await UserModer.deleteOne({email});
-    if (result.deletedCount === 1) {
-        res.status(200).send(`User deleted with email: ${email}`)
-    } else {
-        res.status(404).send(`User not found with email: ${email}`)
-    }
-}
-
 const getOneUser = async(req, res) => {
     let {email, password} = req.body;
 
     let user = await UserModer.findOne({email});
 
-    if (! bcrypt.compareSync(password, user.password)){
+    if (user == null || ! bcrypt.compareSync(password, user.password)){
         return res.status(400).json({
             ok: false,
             err: {
@@ -63,6 +41,26 @@ const getOneUser = async(req, res) => {
         });
     }
     return user;
+}
+
+function getUser(req) {
+    let {email, password} = req.body;
+
+    return new UserModer({
+        email,
+        password: bcrypt.hashSync(password, 10),
+    });
+}
+
+const deleteUser = async(req, res) => {
+    const email = req.params.email
+
+    const result = await UserModer.deleteOne({email});
+    if (result.deletedCount === 1) {
+        res.status(200).send(`User deleted with email: ${email}`)
+    } else {
+        res.status(404).send(`User not found with email: ${email}`)
+    }
 }
 
 module.exports = {

@@ -3,6 +3,6 @@ const {getOneUser,postUser,deleteUser} = require("../controllers/UserControllers
 
 router.post("/",postUser );
 router.delete("/:email", deleteUser);
-router.get("/",getOneUser );
+router.post("/login",getOneUser );
 
 module.exports = router;

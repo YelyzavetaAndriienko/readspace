@@ -124,11 +124,12 @@ li{
     width: 15%;
 }
 .list_text{
-    font-size: 25px;
+    font-size: 20px;
 }
 .img_generate{
     height:70px;
     width:70px;
+    padding: 0 0 20px 0;
 }
 .img2_generate{
     height:90px;
