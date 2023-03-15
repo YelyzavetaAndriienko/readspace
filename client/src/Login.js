@@ -22,8 +22,11 @@ function Login() {
             </div>
             <div class="footer">
                 <button type="submit" class="login_button">УВІЙТИ</button>
+                 </div>
+                <div>
                 <a href="/registration" class="register_link">Створити обліковий запис</a>
-            </div>
+                 </div>
+
           </div>
         </div>      
       )    
