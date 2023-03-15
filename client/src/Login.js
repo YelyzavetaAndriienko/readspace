@@ -3,10 +3,12 @@ import axios from "./api/axios";
 import { useNavigate } from "react-router-dom";
 import './style.css'
 
-function Login() {
+function Login({ payload }) {
 
   const [email, setEmail] = useState();
   const [password,setPassword] = useState(1);
+
+  
 
   const navigate = useNavigate();
 
@@ -27,13 +29,14 @@ function Login() {
         {email, password}
       );
 
-      navigate("/")
+      payload.user = response.data.user
+      navigate("/", {payload: response.data.user})
 
     } catch (err) {
       alert("Incorrect credentials");
       console.log(err)
     }
-}
+  }
 
     return(
         <div className="login">
