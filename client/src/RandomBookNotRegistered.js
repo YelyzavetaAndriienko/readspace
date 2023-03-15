@@ -60,8 +60,7 @@ function RandomBook() {
       </div>
 
       <div class="footer">
-        <button class="next_button">НАСТУПНА</button>
-        <button class="save_button">ЗБЕРЕГТИ</button>
+        <button onClick={()=>window.location.reload(false)} className="recomend_button">ПОРЕКОМЕНДУВАТИ</button>
       </div>
     </div>    
   )    

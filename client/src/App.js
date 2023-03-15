@@ -19,7 +19,7 @@ function App() {
                 <Route path='/' element={<Home payload = {payload}/>} />
                 <Route path='/login' element={<Login payload = {payload} />} />
                 <Route path='/registration' element={<Registration payload = {payload}/>} />
-                <Route path='/randombook' element={<RandomBook payload = {payload}/>} />
+                {/*<Route path='/randombook' element={<RandomBook payload = {payload}/>} />*/}
                 <Route path='/randombooknotreg' element={<RandomBookNotRegistered payload = {payload}/>} />
                 <Route path='/profile' element={<Profile payload = {payload}/>} />
             </Routes>
