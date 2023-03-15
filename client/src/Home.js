@@ -7,7 +7,7 @@ function Home() {
     const navigate = useNavigate()
 
     function recomendBook(event){
-        navigate('/randombook')
+        navigate('/randombooknotreg')
     }
 
     return(
@@ -47,7 +47,7 @@ function Home() {
                     </ul>
                        </div>
                          <div className="generate_button">
-                         <a href="/randombook" className="generate_link" >ЗГЕНЕРУВАТИ</a>
+                         <a href="/randombooknotreg" className="generate_link" >ЗГЕНЕРУВАТИ</a>
                          </div>
                     </div>
 
