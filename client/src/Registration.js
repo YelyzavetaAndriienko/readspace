@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "./api/axios";
 import './style.css'
 
-function Registration() {
+function Registration({ payload }) {
 
   const [firstName, setFirstName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -30,6 +30,7 @@ function Registration() {
         "/user/",
         {email, password}
       );
+      payload.user = response.data.user
       navigate("/")
 
     } catch (err) {
