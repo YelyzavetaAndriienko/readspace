@@ -7,7 +7,6 @@ function Login({ payload }) {
 
   const [email, setEmail] = useState();
   const [password,setPassword] = useState(1);
-
   
 
   const navigate = useNavigate();
@@ -57,7 +56,7 @@ function Login({ payload }) {
                 </div>
             </div>
            <div class="footer">
-                <button type="submit" class="login_button">УВІЙТИ</button>
+                <button type="submit" class="login_button" onClick={()=>handleSubmit() }>УВІЙТИ</button>
                  </div>
                 <div>
                 <a href="/registration" class="register_link">Створити обліковий запис</a>
