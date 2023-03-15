@@ -113,21 +113,29 @@ const getBookById = async (req,res) => {
 //check this method
 const postBook = async  (req,res) => {
 
-    let post = {
+    let post = new BookModel ({
         title: req.body.title,
         description: req.body.description,
         image: req.body.image,
         authors: await getAuthors(req.body.authors),
         genres: await getGenres(req.body.genres)
-    }
+    })
 
-        res.json(post)
+        //res.json(post)
 
 
-     await BookModel.save(post)
-        res.json({ ok: true,
-            book:post,
-            status:"success"})
+     await post.save((err, post) => {
+         if (err) {
+             return res.status(400).json({
+                 ok: false,
+                 err: err
+             });
+         }
+         res.json({
+             ok: true,
+             user: post
+         });
+     })
 
 }
 
