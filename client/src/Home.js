@@ -12,7 +12,7 @@ function Home() {
 
     return(
             <div className="home">
-                  
+              <div class="container">
                   <div className="main_info">
                     <div className="image_main">
                     <div className="info_main">
@@ -20,7 +20,7 @@ function Home() {
                      <div className="text_main">Вирішуєте, що читати далі? Ви в правильному місці!</div>
                      <button onClick={recomendBook} class="button"> ПІДІБРАТИ КНИГУ</button>
                        </div>
-                        <img src={require("./images/main.jpg")} alt="main" class="main"/>
+                        <img src={require("./images/main_blur3.png")} alt="main" class="main"/>
                            </div>
                             </div>
                     <div className="generate">
@@ -50,7 +50,7 @@ function Home() {
                          <a href="/randombooknotreg" className="generate_link" >ЗГЕНЕРУВАТИ</a>
                          </div>
                     </div>
-
+                    </div>
                   </div>
 
       )    
