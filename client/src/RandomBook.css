@@ -7,17 +7,20 @@ body{
     width: 100%;
     text-align: center;
     position: relative;
+
 }
 
 .bookbackgr {
     height: 100%;
-    width: 50%;
+    /* width: 50%;*/
+    width: 650px;
     /*background-image: url(images/bookbackgr.png); */
 }
 
 .bookbackgr_block {
     height: 100%;
-    width: 50%;
+   /* width: 50%;*/
+    width: 650px;
     position: absolute;
     top: 0;
     left:50%;
@@ -47,7 +50,7 @@ h2 {
     height: 70%;
     width: 70%;
     */
-    height: 295px;
+    height: 280px;
     width: 200px;
 }
 
