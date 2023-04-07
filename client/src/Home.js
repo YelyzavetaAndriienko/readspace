@@ -7,7 +7,7 @@ function Home() {
     const navigate = useNavigate()
 
     function recomendBook(event){
-        navigate('/randombook')
+        navigate('/randombooknotreg')
     }
 
     return(

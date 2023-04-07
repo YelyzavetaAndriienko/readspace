@@ -1,7 +1,22 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom"
+
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ payload }) => {
+
+  const navigate = useNavigate()
+
+  const handleSubmit  = async (e) => {
+    console.log(payload)
+    if (payload && payload.user) {
+        navigate("/profile")
+    }
+    else{
+      navigate("/login")
+    }
+  }
+  
 return (
 	<>
 	<div class="container">
@@ -19,11 +34,12 @@ return (
 */}
                 <div class="header_block">
                   <div class="header_lng">
-                   <a href="/profile">
+                   <a onClick={()=>handleSubmit() }>
                     <img src={require("./images/profile.png")} alt="profile" class="profile"/>
                    </a>
                   </div>
                 </div>
+
               </div>
             </div>
 	</>
