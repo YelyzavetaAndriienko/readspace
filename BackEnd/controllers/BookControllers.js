@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const {BookModel, AuthorModel, GenresModel} = require("../models/Book");
+const UserModel = require('../models/User')
 
 const getBooks = async (req, res) => {
     try {
@@ -71,6 +72,90 @@ const getRandomBooksWithoutParam = async (req, res) => {
     } catch (err) {
         res.status(400).json({ok: false,
                               error : err.message})
+    }
+};
+
+//рекомендувати тільки ті книги, які не збережені у юзера?
+const getRandomBooksForUser = async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const user = await UserModel.findById(id)
+       if (user) {
+           let myRandomBook = null
+           if (user.genres.length>=1) {
+                myRandomBook = await BookModel.aggregate([
+                   {
+                       $lookup: {
+                           from: 'Authors_ua',
+                           localField: 'authors',
+                           foreignField: '_id',
+                           as: 'full_authors'
+                       }
+                   },
+                   {
+                       $lookup: {
+                           from: 'Genres_ua',
+                           localField: 'genres',
+                           foreignField: '_id',
+                           as: 'full_genres'
+                       }
+                   },
+                   {
+                       $match: {
+                           genres: {
+                               $in: user.genres
+                           },
+                           _id : {
+                               $nin: user.books
+                           }
+                       }
+                   },
+                   {$sample: {size: 1}}
+
+               ])
+           }
+           else {
+                myRandomBook = await BookModel.aggregate([
+                   {
+                       $lookup: {
+                           from: 'Authors_ua',
+                           localField: 'authors',
+                           foreignField: '_id',
+                           as: 'full_authors'
+                       }
+                   },
+                   {
+                       $lookup: {
+                           from: 'Genres_ua',
+                           localField: 'genres',
+                           foreignField: '_id',
+                           as: 'full_genres'
+                       }
+                   },
+                   {$sample: {size: 1}}
+
+               ])
+           }
+           const forRes = []
+           for await (const book of myRandomBook) {
+               forRes.push(book)
+           }
+
+           res.json({
+               ok: true,
+               book: forRes[0],
+               status: "success"
+           })
+       }
+       else {
+           res.status(400).json({ok: false,
+               error : "No user"})
+       }
+
+    } catch (err) {
+        res.status(400).json({ok: false,
+            error : err.message})
     }
 };
 
@@ -168,5 +253,5 @@ const postBook = async  (req,res) => {
 }
 
 module.exports = {
-    getBooks, getRandomBooksWithoutParam, getBookById, postBook
+    getBooks, getRandomBooksWithoutParam, getRandomBooksForUser, getBookById, postBook
 };
