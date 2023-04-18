@@ -1,64 +1,71 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import axios from "./api/axios";
 import './RandomBook.css'
 
 function RandomBook() {
-    return(
-        <div className="randombook">
-          <header class="header">
-            <div class="container">
-              <div class="header_wrapper">
 
-                <div class="header_block">
-                   <img src={require("./images/logo.png")} alt="logo" class="logo"/>
-                </div>
+  const [randomBook, setBook] = useState({
+    authors: "",
+    description: "",
+    full_authors: [{author_name: ""}],
+    full_genres: [{genre_name: ""}],
+    image: "",
+    title: ""
+  })
 
-                <nav class="nav">
-                  <a href="#" class="nav_link">ГОЛОВНА</a>
-                  <a href="#" class="nav_link">КАТЕГОРІЇ</a>
-                  <a href="#" class="nav_link">КОНТАКТИ</a>
-                  <a href="#" class="nav_link">ПРО НАС</a>
-                </nav>
+  async function fetchRandomBook() {
+    try{
+      axios.get(
+          "/book/random_book_without_param/" )
+          .then((response) => {
+            setBook(response.data.book)
+          })
+    } catch (er) {
+      console.log(er)
+    }
+  }
 
-                <div class="header_block">
-                  <div class="header_lng">
-                   <img src={require("./images/profile.png")} alt="profile" class="profile"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
+  useEffect(()=>{
+    fetchRandomBook()
+  },[])
 
-          <div class="book_block">
-            <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
-            <div class="bookbackgr_block">
-              <h2>"Маленький принц"</h2>
-              <div class="bookdescr_block">
-              <div class="bookimg_block">
-                <img src="https://cdn.eksmo.ru/v2/ITD000000000840510/COVER/cover1__w820.jpg" alt="book" class="bookimg"/>
-              </div>
-              <div class="book_txt">
-              <div class="booktxt_author">
-                <h3>АВТОР</h3>
-                Антуан
-              </div>
-              <div class="booktxt_genre">
-                <h3>ЖАНР</h3>
-                фантастика
-              </div>
-              <div class="booktxt_descr">
-                <h3>ОПИС</h3>
-                Ця книжка — справжній шедевр видатного французького письменника, поета й мислителя, пілота і вченого, конструктора й винахідника, людини-легенди Антуана де Сент-Екзюпері
-              </div>
-              </div>
-              </div>
-            </div>
+  return(
+    <div className="randombook">
+      <div class="book_block">
+        <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
+        <div class="bookbackgr_block">
+          <h2>{randomBook.title}</h2>
+          <div class="bookdescr_block">
+          <div class="bookimg_block">
+            <img src={randomBook.image} alt="book" class="bookimg"/>
           </div>
-
-          <div class="footer">
-            <button class="recomend_button">ПОРЕКОМЕНДУВАТИ</button>
+          <div class="book_txt">
+          <div class="booktxt_author">
+            <h3>АВТОР</h3>
+            { randomBook.full_authors.map(i => i.author_name )}
           </div>
-        </div>    
-      )    
+          <div class="booktxt_genre">
+            <h3>ЖАНР</h3>
+            { randomBook.full_genres.map(i => i.genre_name + " " )}
+          </div>
+          <div class="booktxt_descr">
+            <h3>ОПИС</h3>
+            <div className="booktxt_descr_scroll">
+                {randomBook.description}
+                </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+       {/* <button class="next_button">НАСТУПНА</button>
+        <button class="save_button">ЗБЕРЕГТИ</button> */}
+        <button class="generate_button" onClick={()=>window.location.reload(false)}>ПОРЕКОМЕНДУВАТИ</button>
+      </div>
+    </div>    
+  )    
 }
 
 export default RandomBook

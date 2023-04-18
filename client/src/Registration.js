@@ -1,12 +1,15 @@
 import React, {useState} from "react"
+import { useNavigate } from "react-router-dom";
 import axios from "./api/axios";
 import './style.css'
 
-function Registration() {
+function Registration({ payload }) {
 
   const [firstName, setFirstName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password,setPassword] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const {id , value} = e.target;
@@ -22,16 +25,13 @@ function Registration() {
   }
 
   const handleSubmit  = async (e) => {
-    console.log(firstName, email, password);
     try {
       const response = await axios.post(
         "/user/",
         {email, password}
       );
-
-      setFirstName("");
-      setEmail("");
-      setPassword("");
+      payload.user = response.data.user
+      navigate("/")
 
     } catch (err) {
       console.log(err)
