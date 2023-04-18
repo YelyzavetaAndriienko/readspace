@@ -125,6 +125,10 @@ h2 {
     overflow-y: auto;
 }
 
+.booktlist_scroll {
+    overflow-y: auto;
+}
+
 *::-webkit-scrollbar,
 *::-webkit-scrollbar-thumb {
   width: 20px;
