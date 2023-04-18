@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import RandomBook from "./RandomBook";
 import Registration from "./Registration";
 import RandomBookNotRegistered from "./RandomBookNotRegistered";
+import Booklist from "./Booklist";
 
 function App() {
     let payload = {};
@@ -22,6 +23,7 @@ function App() {
                 {/*<Route path='/randombook' element={<RandomBook payload = {payload}/>} />*/}
                 <Route path='/randombooknotreg' element={<RandomBookNotRegistered payload = {payload}/>} />
                 <Route path='/profile' element={<Profile payload = {payload}/>} />
+                <Route path='/booklist' element={<Booklist payload = {payload}/>} />
             </Routes>
         </BrowserRouter>
     );

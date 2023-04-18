@@ -9,10 +9,18 @@ body{
     position: relative;
 }
 
-.img_block {
+.img_block_1 {
     width: 50%;
-    height: 300px;
+    height: 200px;
     margin: auto;
+}
+
+.img_block_2 {
+    width: 50%;
+    height: 350px;
+    margin: auto;
+    position: relative;
+
 }
 
 .userbackgr {
@@ -23,6 +31,15 @@ body{
 
 .user_block {
     height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left:50%;
+    transform:translate(-50%);
+    font-size: 12px;
+}
+.genres_block{
+ height: 100%;
     width: 50%;
     position: absolute;
     top: 0;
@@ -58,4 +75,39 @@ h5 {
     align-items: flex-start;
     padding-bottom: 20px;
     font-size: 16px;
+}
+.genres_info_block{
+font-size: 16px;
+}
+.genre{
+display:flex;
+gap: 5px;
+}
+.genres{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 7px;
+}
+input[type="checkbox"]{
+    accent-color: #E1EABC;
+     transform: scale(1.2);
+
+  }
+.button_logout{
+    position: absolute;
+     width: 40%;
+       height: 20px;
+       font-family: 'Inter';
+       font-size: 16px;
+       margin-bottom: 20px;
+       left: 700px;
+       top: 310px;
+       border: 0;
+       color: #664747;
+       background: #EAE3BC;
+       font-weight: bold;
+       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+       border-radius: 30px;
+        text-decoration: none;
 }

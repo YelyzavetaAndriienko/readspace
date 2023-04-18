@@ -27,11 +27,11 @@ return (
                      <img src={require("./images/logo.png")} alt="logo" class="logo"/>
                    </a>
                 </div>
-{/*
+{
                 <nav class="nav">
-                  <a href="./" class="nav_link">ГОЛОВНА</a>
+                  <a href="./booklist" class="nav_link">МОЇ КНИГИ</a>
                 </nav>
-*/}
+}
                 <div class="header_block">
                   <div class="header_lng">
                    <a onClick={()=>handleSubmit() }>
