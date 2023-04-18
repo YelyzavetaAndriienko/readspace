@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import axios from "./api/axios";
 import './RandomBook.css'
+import {Alert, Button} from "react-bootstrap";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RandomBook({ payload }) {
 
@@ -12,7 +14,9 @@ function RandomBook({ payload }) {
     full_genres: [{genre_name: ""}],
     image: "",
     title: ""
-  })
+  });
+
+  const [show, setShow] = useState(false);
   
   const navigate = useNavigate()
 
@@ -37,8 +41,8 @@ function RandomBook({ payload }) {
           "/user/addBook/" + payload.user._id, {book_id:randomBook._id} )
           .then((response) => {
             console.log(response.data)
+            setShow(true)
             payload.user = response.data.user
-            fetchRandomBook()
           })
     } catch (er) {
       console.log(er)
@@ -51,6 +55,12 @@ function RandomBook({ payload }) {
 
   return(
     <div className="randombook">
+        <>
+            <Alert show={show} variant="success" onClose={() => {setShow(false); fetchRandomBook();}} dismissible>
+                <Alert.Heading>Книга збережена!</Alert.Heading>
+            </Alert>
+        </>
+
       <div class="book_block">
         <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
         <div class="bookbackgr_block">
@@ -98,6 +108,9 @@ function RandomBook({ payload }) {
           </button>
         </div>
       }
+
+
+
     </div>    
   )    
 }
