@@ -28,7 +28,7 @@ function RandomBook(payload) {
           });
           setBooks(booksClean);
           let delete_book_id = book._id;
-      await axios.delete(
+      await axios.post(
           ("/user/deleteBook/" +  payload.payload.user._id),
           {delete_book_id});
     } catch (er) {
