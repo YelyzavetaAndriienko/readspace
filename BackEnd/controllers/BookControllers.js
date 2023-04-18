@@ -152,6 +152,7 @@ const getRandomBooksForUser = async (req, res) => {
 
                ])
            }
+
            const forRes = []
            for await (const book of myRandomBook) {
                forRes.push(book)

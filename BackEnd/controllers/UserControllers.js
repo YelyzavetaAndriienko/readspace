@@ -83,8 +83,10 @@ const addBookForUser = async (req, res) => {
                 user_book.push(req.body.book_id)
 
                 await UserModel.updateOne({"_id": req.params.id}, {$set: {"books": user_book}})
+                let user = await UserModel.findById(req.params.id)
                 return res.status(200).json({
                     ok: true,
+                    user : user,
                     user_book: user_book
                 })
             }else {

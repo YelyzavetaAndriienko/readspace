@@ -31,6 +31,20 @@ function RandomBook({ payload }) {
     }
   }
 
+  async function saveBook(){
+    try{
+      axios.post(
+          "/user/addBook/" + payload.user._id, {book_id:randomBook._id} )
+          .then((response) => {
+            console.log(response.data)
+            payload.user = response.data.user
+            fetchRandomBook()
+          })
+    } catch (er) {
+      console.log(er)
+    }
+  }
+
   useEffect(()=>{
     fetchRandomBook()
   },[])
@@ -65,13 +79,25 @@ function RandomBook({ payload }) {
         </div>
       </div>
 
+      {(payload && payload.user) &&
       <div class="footer">
-       {/* <button class="next_button">НАСТУПНА</button>
-        <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="generate_button" onClick={
-          ()=>fetchRandomBook()
-          }>ПОРЕКОМЕНДУВАТИ</button>
+        <button class="next_button" onClick={
+          () => fetchRandomBook()
+        } >НАСТУПНА</button>
+        <button class="save_button" onClick={
+          () => saveBook()
+        }>ЗБЕРЕГТИ</button>
       </div>
+      }
+
+      {(!payload || !payload.user) &&
+        <div class="footer">
+          <button class="generate_button" onClick={
+            () => fetchRandomBook()
+          }>ПОРЕКОМЕНДУВАТИ
+          </button>
+        </div>
+      }
     </div>    
   )    
 }
