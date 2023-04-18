@@ -41,8 +41,8 @@ function Home() {
                       <li>
                       <img src="https://cdn-icons-png.flaticon.com/512/176/176318.png" alt="main" class="img_generate"/>
                       <div className="list_text">
-                      Спочатку читайте найкращі книжки, інакше у вас може не бути можливості прочитати їх взагалі
-                      </div>
+                      Змінити жанри можна лише зареєстрованому користувачу в особистому кабінеті
+                       </div>
                       </li>
                     </ul>
                        </div>
