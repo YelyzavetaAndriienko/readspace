@@ -23,7 +23,7 @@ const getBooks = async (req, res) => {
             }
         ])
 
-        res.json({ok: true,
+       return res.json({ok: true,
                   books:books,
                   status: "success"})
     }
@@ -35,6 +35,21 @@ const getBooks = async (req, res) => {
     }
 
 };
+
+const getAllGenres = async (req,res) => {
+    try {
+         GenresModel.find().then( data => {
+             return res.json({data})
+         }
+        )
+    }
+    catch (err) {
+        res.status(400).json({
+            ok: false,
+            err : err.message
+        })
+    }
+}
 
 const getRandomBooksWithoutParam = async (req, res) => {
 
@@ -253,5 +268,5 @@ const postBook = async  (req,res) => {
 }
 
 module.exports = {
-    getBooks, getRandomBooksWithoutParam, getRandomBooksForUser, getBookById, postBook
+    getBooks, getRandomBooksWithoutParam, getRandomBooksForUser, getBookById, postBook, getAllGenres
 };
