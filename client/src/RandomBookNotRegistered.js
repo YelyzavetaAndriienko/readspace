@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 import axios from "./api/axios";
 import './RandomBook.css'
 import {Alert, Button} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RandomBook({ payload }) {
 
