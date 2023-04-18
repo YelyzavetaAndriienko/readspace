@@ -65,13 +65,23 @@ function RandomBook({ payload }) {
         </div>
       </div>
 
+      {(payload && payload.user) &&
       <div class="footer">
-       {/* <button class="next_button">НАСТУПНА</button>
-        <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="generate_button" onClick={
-          ()=>fetchRandomBook()
-          }>ПОРЕКОМЕНДУВАТИ</button>
+        <button class="next_button" onClick={
+          () => fetchRandomBook()
+        } >НАСТУПНА</button>
+        <button class="save_button">ЗБЕРЕГТИ</button>
       </div>
+      }
+
+      {(!payload || !payload.user) &&
+        <div class="footer">
+          <button class="generate_button" onClick={
+            () => fetchRandomBook()
+          }>ПОРЕКОМЕНДУВАТИ
+          </button>
+        </div>
+      }
     </div>    
   )    
 }
