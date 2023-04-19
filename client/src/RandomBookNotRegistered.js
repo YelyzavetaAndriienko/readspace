@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react"
-import {useNavigate} from "react-router-dom"
+//import {useNavigate} from "react-router-dom"
 import axios from "./api/axios";
 import './RandomBook.css'
-import {Alert, Button} from "react-bootstrap";
+import {Alert} from "react-bootstrap";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RandomBook({ payload }) {
@@ -18,7 +18,7 @@ function RandomBook({ payload }) {
 
   const [show, setShow] = useState(false);
   
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   async function fetchRandomBook() {
     console.log((payload && payload.user) ? payload.user : payload)

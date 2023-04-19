@@ -47,7 +47,7 @@ function Home() {
                     </ul>
                        </div>
                          <div className="generate_button">
-                         <a onClick={recomendBook}  className="generate_link" >ЗГЕНЕРУВАТИ</a>
+                         <a onClick={recomendBook} className="generate_link" >ЗГЕНЕРУВАТИ</a>
                          </div>
                     </div>
                     </div>

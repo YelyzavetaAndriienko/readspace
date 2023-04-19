@@ -28,9 +28,11 @@ return (
                 </a>
                 </div>
 
-                <nav class="nav">
-                  <a onClick={()=>navigate("/booklist", payload)} class="nav_link">МОЇ КНИГИ</a>
-                </nav>
+                  { (payload && payload.user) &&
+                      <nav class="nav">
+                      <a onClick={()=>navigate("/booklist", payload)} class="nav_link">МОЇ КНИГИ</a>
+                      </nav>
+                  }
 
                 <div class="header_block">
                   <div class="header_lng">

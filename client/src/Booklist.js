@@ -72,12 +72,11 @@ function RandomBook(payload) {
           </div>
           </div>
         </div>
-      </div>
-
-      <div class="footer_button">
-       {/* <button class="next_button">НАСТУПНА</button>
+          <div className="footer_button">
+              {/* <button class="next_button">НАСТУПНА</button>
         <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="delete_button" onClick={() => onDelete(randomBook)}>x</button>
+              <button className="delete_button" onClick={() => onDelete(randomBook)}>x</button>
+          </div>
       </div>
       </div>
       )}
