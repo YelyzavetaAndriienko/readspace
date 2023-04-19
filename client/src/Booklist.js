@@ -45,8 +45,8 @@ function RandomBook(payload) {
     <div className="randombook">
 
       {books && books.map(randomBook => 
-      <div>
-      <div class="book_block">
+      <div class="book_block_main">
+      <div class="book_block_list">
         <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
         <div class="bookbackgr_block">
           <h2>{randomBook.title}</h2>
@@ -74,10 +74,10 @@ function RandomBook(payload) {
         </div>
       </div>
 
-      <div class="footer">
+      <div class="footer_button">
        {/* <button class="next_button">НАСТУПНА</button>
         <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="generate_button" onClick={() => onDelete(randomBook)}>Видалити</button>
+        <button class="delete_button" onClick={() => onDelete(randomBook)}>x</button>
       </div>
       </div>
       )}
