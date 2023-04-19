@@ -53,6 +53,7 @@ body{
 .bookbackgr {
     height: 100%;
     /* width: 50%;*/
+    opacity: 40%;
     width: 650px;
     /*background-image: url(images/bookbackgr.png); */
 }
