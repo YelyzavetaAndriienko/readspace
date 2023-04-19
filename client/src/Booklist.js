@@ -2,24 +2,35 @@ import React, {useState, useEffect} from "react"
 import axios from "./api/axios";
 import './RandomBook.css'
 
-function RandomBook() {
+function RandomBook(payload) {
 
-  const [randomBook, setBook] = useState({
-    authors: "",
-    description: "",
-    full_authors: [{author_name: ""}],
-    full_genres: [{genre_name: ""}],
-    image: "",
-    title: ""
-  })
+  const [books, setBooks] = useState([])
 
   async function fetchRandomBook() {
     try{
-      axios.get(
-          "/book/random_book_without_param/" )
+      console.log(payload.payload.user._id)
+      await axios.get(
+          "/user/getBooks/" +  payload.payload.user._id)
           .then((response) => {
-            setBook(response.data.book)
+            setBooks(response.data.books)
+            console.log(response.data.books)
           })
+    } catch (er) {
+      console.log(er)
+    }
+  }
+
+  async function onDelete(book) {
+    try{
+      console.log(book._id);
+          let booksClean = books.filter(function(item) {
+              return item._id !== book._id
+          });
+          setBooks(booksClean);
+          let delete_book_id = book._id;
+      await axios.post(
+          ("/user/deleteBook/" +  payload.payload.user._id),
+          {delete_book_id});
     } catch (er) {
       console.log(er)
     }
@@ -30,7 +41,11 @@ function RandomBook() {
   },[])
 
   return(
+    <div className="booktlist_scroll">
     <div className="randombook">
+
+      {books && books.map(randomBook => 
+      <div>
       <div class="book_block">
         <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
         <div class="bookbackgr_block">
@@ -62,8 +77,12 @@ function RandomBook() {
       <div class="footer">
        {/* <button class="next_button">НАСТУПНА</button>
         <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="generate_button" onClick={()=>window.location.reload(false)}>Видалити</button>
+        <button class="generate_button" onClick={() => onDelete(randomBook)}>Видалити</button>
       </div>
+      </div>
+      )}
+      </div>   
+      
     </div>    
   )    
 }

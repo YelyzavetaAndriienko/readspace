@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react"
+import {useNavigate} from "react-router-dom"
 import axios from "./api/axios";
 import './RandomBook.css'
+import {Alert, Button} from "react-bootstrap";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
-function RandomBook() {
+function RandomBook({ payload }) {
 
   const [randomBook, setBook] = useState({
     authors: "",
@@ -11,14 +14,35 @@ function RandomBook() {
     full_genres: [{genre_name: ""}],
     image: "",
     title: ""
-  })
+  });
+
+  const [show, setShow] = useState(false);
+  
+  const navigate = useNavigate()
 
   async function fetchRandomBook() {
+    console.log((payload && payload.user) ? payload.user : payload)
+    let route = (payload && payload.user) ? "/book/randombook/" + payload.user._id : "/book/random_book_without_param/";
+    console.log(route)
     try{
       axios.get(
-          "/book/random_book_without_param/" )
+          route )
           .then((response) => {
             setBook(response.data.book)
+          })
+    } catch (er) {
+      console.log(er)
+    }
+  }
+
+  async function saveBook(){
+    try{
+      axios.post(
+          "/user/addBook/" + payload.user._id, {book_id:randomBook._id} )
+          .then((response) => {
+            console.log(response.data)
+            setShow(true)
+            payload.user = response.data.user
           })
     } catch (er) {
       console.log(er)
@@ -31,6 +55,12 @@ function RandomBook() {
 
   return(
     <div className="randombook">
+        <>
+            <Alert show={show} variant="success" onClose={() => {setShow(false); fetchRandomBook();}} dismissible>
+                <Alert.Heading>Книга збережена!</Alert.Heading>
+            </Alert>
+        </>
+
       <div class="book_block">
         <img src={require("./images/bookbackgr.png")} alt="bookbackgr" class="bookbackgr"/>
         <div class="bookbackgr_block">
@@ -59,11 +89,28 @@ function RandomBook() {
         </div>
       </div>
 
+      {(payload && payload.user) &&
       <div class="footer">
-       {/* <button class="next_button">НАСТУПНА</button>
-        <button class="save_button">ЗБЕРЕГТИ</button> */}
-        <button class="generate_button" onClick={()=>window.location.reload(false)}>ПОРЕКОМЕНДУВАТИ</button>
+        <button class="next_button" onClick={
+          () => fetchRandomBook()
+        } >НАСТУПНА</button>
+        <button class="save_button" onClick={
+          () => saveBook()
+        }>ЗБЕРЕГТИ</button>
       </div>
+      }
+
+      {(!payload || !payload.user) &&
+        <div class="footer">
+          <button class="generate_button" onClick={
+            () => fetchRandomBook()
+          }>ПОРЕКОМЕНДУВАТИ
+          </button>
+        </div>
+      }
+
+
+
     </div>    
   )    
 }
